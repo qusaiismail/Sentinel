@@ -21,12 +21,16 @@ jobs:
   deploy-content:
     runs-on: windows-latest
     env:
-      resourceGroupName: 'paltel-sentinel'
+      resourceGroupName: 'sentinel'
       workspaceName: 'paltel-sentinel'
       directory: '${{ github.workspace }}'
       cloudEnv: 'AzureCloud'
       creds: ${{ secrets.AZURE_SENTINEL_CREDENTIALS_a685999b14b14a2aadf9b7d39a4b0b8b }}
-      contentTypes: 'HuntingQuery,AnalyticsRule'
+      contentTypes: 'HuntingQuery,AnalyticsRule,Workbook'
+      branch: 'yaronfr/log4j_1'
+      sourceControlId: 'a685999b-14b1-4a2a-adf9-b7d39a4b0b8b'
+      githubAuthToken: ${{ secrets.GITHUB_TOKEN }}
+      smartDeployment: 'true'
 
     steps:
     - name: Login to Azure (Attempt 1)
